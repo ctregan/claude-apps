@@ -1,12 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import AppCard from './AppCard';
 import './HomePage.css';
 
-interface HomePageProps {
-  onNavigate: (path: string) => void;
-}
+const HomePage: React.FC = () => {
+  const navigate = useNavigate();
 
-const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
+  const handleNavigate = (path: string) => {
+    navigate(path);
+  };
   const apps = [
     {
       title: 'Family Chore Manager',
@@ -33,7 +35,7 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               description={app.description}
               icon={app.icon}
               path={app.path}
-              onNavigate={onNavigate}
+              onNavigate={handleNavigate}
             />
           ))}
         </div>
