@@ -163,19 +163,85 @@ const ChoreManager: React.FC = () => {
     setShowSettingsModal(true);
   };
 
-  // Load data from localStorage on mount
+  // Load data from localStorage on mount and setup PWA
   useEffect(() => {
     const saved = localStorage.getItem('choreManagerData');
     if (saved) {
       setData(JSON.parse(saved));
     }
     setCurrentWeek(getWeekString(new Date()));
+    
+    // Setup PWA for this specific app
+    setupChoreManagerPWA();
+
+    // Cleanup function to reset PWA when component unmounts
+    return () => {
+      // Reset manifest to main app
+      const manifest = document.querySelector('link[rel="manifest"]');
+      if (manifest) {
+        manifest.setAttribute('href', '/manifest.json');
+      }
+      
+      // Reset theme color
+      const themeColor = document.querySelector('meta[name="theme-color"]');
+      if (themeColor) {
+        themeColor.setAttribute('content', '#667eea');
+      }
+    };
   }, []);
 
   // Save data to localStorage whenever data changes
   useEffect(() => {
     localStorage.setItem('choreManagerData', JSON.stringify(data));
   }, [data]);
+
+  // Setup PWA functionality for Chore Manager
+  const setupChoreManagerPWA = () => {
+    // Add the chore-specific manifest
+    const existingManifest = document.querySelector('link[rel="manifest"]');
+    if (existingManifest) {
+      existingManifest.setAttribute('href', '/chore-manifest.json');
+    } else {
+      const link = document.createElement('link');
+      link.rel = 'manifest';
+      link.href = '/chore-manifest.json';
+      document.head.appendChild(link);
+    }
+
+    // Add iOS-specific meta tags for chore manager
+    const addMetaTag = (name: string, content: string) => {
+      const existing = document.querySelector(`meta[name="${name}"]`);
+      if (existing) {
+        existing.setAttribute('content', content);
+      } else {
+        const meta = document.createElement('meta');
+        meta.name = name;
+        meta.content = content;
+        document.head.appendChild(meta);
+      }
+    };
+
+    addMetaTag('apple-mobile-web-app-title', 'Chore Manager');
+    addMetaTag('apple-mobile-web-app-capable', 'yes');
+    addMetaTag('apple-mobile-web-app-status-bar-style', 'default');
+
+    // Update theme color
+    const themeColor = document.querySelector('meta[name="theme-color"]');
+    if (themeColor) {
+      themeColor.setAttribute('content', '#4CAF50');
+    }
+
+    // Register chore-specific service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/chore-sw.js', { scope: '/chores' })
+        .then(registration => {
+          console.log('Chore Manager Service Worker registered:', registration);
+        })
+        .catch(error => {
+          console.log('Chore Manager Service Worker registration failed:', error);
+        });
+    }
+  };
 
   const currentChores = getChoresForWeekAndPerson(currentWeek, currentPerson);
 

@@ -18,6 +18,24 @@
           "value": "/"
         }
       ]
+    },
+    {
+      "source": "/chore-sw.js",
+      "headers": [
+        {
+          "key": "Service-Worker-Allowed",
+          "value": "/chores"
+        }
+      ]
+    },
+    {
+      "source": "/chore-manifest.json",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/manifest+json"
+        }
+      ]
     }
   ]
 }
