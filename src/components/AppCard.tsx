@@ -10,8 +10,18 @@ interface AppCardProps {
 }
 
 const AppCard: React.FC<AppCardProps> = ({ title, description, icon, path, onNavigate }) => {
+  const handleClick = () => {
+    if (path.startsWith('http')) {
+      // External URL - open in new tab
+      window.open(path, '_blank');
+    } else {
+      // Internal route - use navigation
+      onNavigate(path);
+    }
+  };
+
   return (
-    <div className="app-card" onClick={() => onNavigate(path)}>
+    <div className="app-card" onClick={handleClick}>
       <div className="app-icon">{icon}</div>
       <h3 className="app-title">{title}</h3>
       <p className="app-description">{description}</p>

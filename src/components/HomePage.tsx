@@ -14,7 +14,7 @@ const HomePage: React.FC = () => {
       title: 'Family Chore Manager',
       description: 'Organize and track household chores for you and your partner on a weekly basis.',
       icon: '🏠',
-      path: '/chores'
+      path: 'https://chores.char-regan.com'
     }
     // Future apps will be added here
   ];
