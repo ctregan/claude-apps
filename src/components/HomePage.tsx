@@ -1,13 +1,12 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import AppCard from './AppCard';
 import './HomePage.css';
 
 const HomePage: React.FC = () => {
-  const navigate = useNavigate();
-
   const handleNavigate = (path: string) => {
-    navigate(path);
+    // This function is kept for AppCard compatibility
+    // but won't be used since all apps are now external
+    console.log('Internal navigation attempted:', path);
   };
   const apps = [
     {
