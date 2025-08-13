@@ -21,11 +21,39 @@
     z-index: 100;
 }
 
+.header-top {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.back-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-btn:hover {
+    background: #45a049;
+    transform: scale(1.1);
+}
+
 .header h1 {
     color: #4CAF50;
     font-size: 1.8rem;
-    margin-bottom: 15px;
+    margin: 0;
     font-weight: 600;
+    flex: 1;
 }
 
 .week-selector {

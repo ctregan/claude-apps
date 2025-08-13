@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#4CAF50" />
+    <meta
+      name="description"
+      content="Family Chore Manager - Organize and track household chores for you and your partner on a weekly basis"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/chore-icon-192.png" />
+    <!-- iOS PWA Meta Tags for Chore Manager -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Chore Manager">
+    <!-- Chore Manager PWA Manifest -->
+    <link rel="manifest" href="%PUBLIC_URL%/chore-manifest.json" />
+    <title>Family Chore Manager</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script>
+      // Redirect to /chores route to load the React app
+      if (window.location.pathname === '/chores.html') {
+        window.history.replaceState(null, '', '/chores');
+      }
+    </script>
+  </body>
+</html>

@@ -5,6 +5,10 @@
   "framework": "create-react-app",
   "rewrites": [
     {
+      "source": "/chores",
+      "destination": "/chores.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
