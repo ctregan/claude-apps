@@ -1,46 +1,179 @@
-# Getting Started with Create React App
+# Claude Apps
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A collection of useful applications built with Claude AI, starting with the Family Chore Manager PWA.
 
-## Available Scripts
+## 🚀 Live Demo
 
-In the project directory, you can run:
+Deploy this project to Vercel for easy hosting and automatic deployments.
 
-### `npm start`
+## 📱 Apps Included
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Family Chore Manager
+- **Description**: Organize and track household chores for you and your partner on a weekly basis
+- **Features**:
+  - Weekly chore tracking with navigation
+  - Two-person management with customizable names
+  - Touch-friendly mobile interface
+  - Offline PWA functionality
+  - iOS homescreen installation support
+  - Local data persistence
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 🛠️ Tech Stack
 
-### `npm test`
+- **Frontend**: React 19 with TypeScript
+- **Styling**: CSS3 with mobile-first responsive design
+- **Routing**: React Router DOM
+- **PWA**: Service Worker, Web App Manifest
+- **Build**: Create React App
+- **Deployment**: Vercel
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🏗️ Project Structure
 
-### `npm run build`
+```
+claude-apps/
+├── public/
+│   ├── manifest.json          # PWA configuration
+│   └── index.html            # Main HTML template
+├── src/
+│   ├── components/
+│   │   ├── HomePage.tsx      # Landing page with app cards
+│   │   ├── AppCard.tsx       # Reusable app card component
+│   │   ├── ChoreManager.tsx  # Family Chore Manager app
+│   │   └── *.css            # Component styles
+│   ├── App.tsx              # Main app with routing
+│   └── App.css              # Global styles
+├── vercel.json              # Vercel deployment config
+└── package.json             # Dependencies and scripts
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🚦 Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prerequisites
+- Node.js 16+ 
+- npm or yarn
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Installation
+```bash
+# Clone the repository
+git clone <repository-url>
+cd claude-apps
 
-### `npm run eject`
+# Install dependencies
+npm install
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# Start development server
+npm start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The app will open at `http://localhost:3000`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 📦 Build & Deploy
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Build for Production
+```bash
+npm run build
+```
 
-## Learn More
+### Deploy to Vercel
+1. **Automatic Deployment** (Recommended):
+   - Connect your GitHub repository to Vercel
+   - Push changes to trigger automatic deployments
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. **Manual Deployment**:
+   ```bash
+   # Install Vercel CLI
+   npm i -g vercel
+   
+   # Deploy
+   vercel --prod
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Deploy to Other Platforms
+The build output in the `build/` folder can be deployed to any static hosting service:
+- Netlify
+- GitHub Pages  
+- AWS S3
+- Firebase Hosting
+
+## 📱 PWA Installation
+
+### iOS (Safari)
+1. Open the deployed app in Safari
+2. Tap the Share button
+3. Select "Add to Home Screen"
+4. Tap "Add" to install
+
+### Android (Chrome)
+1. Open the app in Chrome
+2. Tap the menu (three dots)
+3. Select "Add to Home Screen" or "Install App"
+
+## 🔧 Adding New Apps
+
+To add a new Claude-built app to the collection:
+
+1. **Create the component**:
+   ```tsx
+   // src/components/NewApp.tsx
+   import React from 'react';
+   import './NewApp.css';
+   
+   const NewApp: React.FC = () => {
+     return <div>Your new app content</div>;
+   };
+   
+   export default NewApp;
+   ```
+
+2. **Add routing**:
+   ```tsx
+   // src/App.tsx
+   import NewApp from './components/NewApp';
+   
+   // Add to Routes
+   <Route path="/newapp" element={<NewApp />} />
+   ```
+
+3. **Update homepage**:
+   ```tsx
+   // src/components/HomePage.tsx
+   const apps = [
+     // ... existing apps
+     {
+       title: 'New App',
+       description: 'Description of your new app',
+       icon: '🆕',
+       path: '/newapp'
+     }
+   ];
+   ```
+
+## 🎨 Customization
+
+### Theme Colors
+Update colors in:
+- `src/App.css` (global styles)
+- `public/manifest.json` (PWA theme)
+- Individual component CSS files
+
+### App Icons
+Replace the following files in `public/`:
+- `favicon.ico` (16x16, 32x32, 64x64)
+- `logo192.png` (192x192)
+- `logo512.png` (512x512)
+
+## 📄 License
+
+This project is open source and available under the MIT License.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 🐛 Issues
+
+If you encounter any issues, please report them in the GitHub Issues section.
+
+---
+
+Built with ❤️ using Claude AI
