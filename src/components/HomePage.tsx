@@ -14,6 +14,12 @@ const HomePage: React.FC = () => {
       description: 'Organize and track household chores for you and your partner on a weekly basis.',
       icon: '🏠',
       path: 'https://chores.char-regan.com'
+    },
+    {
+      title: 'Seattle Mariners Dashboard',
+      description: 'Track team stats, upcoming games, and player performance for the Seattle Mariners.',
+      icon: '⚾',
+      path: 'https://mariners.char-regan.com'
     }
     // Future apps will be added here
   ];
